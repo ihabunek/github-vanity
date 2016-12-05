@@ -28,12 +28,16 @@ Push the repo to GitHub and presto!
 Reference
 ---------
 
-``github_vanity.write_text(text, repo, offset, start_date)``
+``github_vanity.write_text(text, repo, **kwargs)``
 
 - **text** - the text to write
 - **repo** - the repo to write to
+
+The ``kwargs`` are:
+
 - **offset** - number of spaces to leave to the left (default is 0)
 - **spacing** - spacing between letters (default is 1)
+- **space_width** - width of space character (default is 4)
 - **commits** - number of commits per pixel (default is 50)
 - **start_date** - the date to start with, should be a Sunday (default start date is the Sunday 52 weeks before the last one, which is the first pixel visible on the chart)
 

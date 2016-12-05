@@ -6,8 +6,6 @@ from sys import stdout
 
 from .font import get_char_grid, get_char_width
 
-SPACE_WIDTH = 5
-
 
 def get_root_date(today=date.today()):
     weekday = today.weekday()
@@ -41,10 +39,10 @@ def write_char(repo, char, start_date, offset, commits):
                 write_pixel(repo, start_date, x + offset, y, commits)
 
 
-def write_text(text, repo, start_date=get_root_date(), offset = 0, spacing=1, commits=50):
+def write_text(text, repo, start_date=get_root_date(), offset = 0, spacing=1, space_width=4, commits=50):
     for char in text:
         if char == ' ':
-            offset += SPACE_WIDTH
+            offset += space_width
             continue
 
         width = get_char_width(char)
