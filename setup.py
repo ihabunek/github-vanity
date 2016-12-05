@@ -34,5 +34,10 @@ setup(
     packages=['github_vanity'],
     install_requires=[
         'GitPython>=2.1.0'
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'vanity=github_vanity.console:main',
+        ],
+    }
 )
