@@ -16,8 +16,8 @@ def get_root_date(today=date.today()):
 
 
 def get_date(start_date, x, y):
-    if x < 0 or x > 52 or y < 0 or y > 6:
-        raise Exception("Out of bounds")
+    if x < 0 or y < 0 or y > 6:
+        raise ValueError("Out of bounds")
 
     return start_date + timedelta(weeks=x) + timedelta(days=y)
 
