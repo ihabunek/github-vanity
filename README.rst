@@ -45,6 +45,5 @@ The ``kwargs`` are:
 TODO
 ----
 
-- make a CLI interface
 - target a specific branch
 - publish to the Cheese shop

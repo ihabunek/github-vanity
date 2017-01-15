@@ -1,7 +1,4 @@
-import time
-
 from datetime import date, timedelta
-from random import randint
 from sys import stdout
 
 from .font import get_char_grid, get_char_width
@@ -25,7 +22,10 @@ def write_pixel(repo, start_date, x, y, commits):
     datetime = "%sT12:00:00" % str(date)
 
     for i in range(commits):
-        msg = "Pixel at (%d, %d), commit %d" % (x, y, i)
+        msg = "Commit lovingly crafted by Github Vanity\n\n"
+        msg += "Pixel at (%d, %d), commit %d\n" % (x, y, i)
+        msg += "https://github.com/ihabunek/github-vanity"
+
         repo.index.commit(msg, commit_date=datetime, author_date=datetime)
 
 
@@ -39,7 +39,7 @@ def write_char(repo, char, start_date, offset, commits):
                 write_pixel(repo, start_date, x + offset, y, commits)
 
 
-def write_text(text, repo, start_date=get_root_date(), offset = 0, spacing=1, space_width=4, commits=50):
+def write_text(text, repo, start_date=get_root_date(), offset=0, spacing=1, space_width=4, commits=50):
     for char in text:
         if char == ' ':
             offset += space_width
@@ -47,9 +47,9 @@ def write_text(text, repo, start_date=get_root_date(), offset = 0, spacing=1, sp
 
         width = get_char_width(char)
 
-        print "\nWriting '%s' at offset %d" % (char, offset)
+        print("\nWriting '%s' at offset %d" % (char, offset))
         write_char(repo, char, start_date, offset, commits)
 
         offset += width + spacing
 
-    print "\nDone"
+    print("\nDone")
