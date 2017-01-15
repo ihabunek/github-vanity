@@ -24,7 +24,7 @@ Populate the repo with the desired text:
 
 .. code-block:: bash
 
-    vanity write "Hello there!"
+    vanity write "Hi there!"
 
 Push the repo to GitHub and presto!
 
