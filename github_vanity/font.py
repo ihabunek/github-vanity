@@ -41,22 +41,22 @@ font = {
         "    ",
     ],
     "e": [
-        "    ",
-        "eeee",
-        "e   ",
-        "eeee",
-        "e   ",
-        "eeee",
-        "    ",
+        "   ",
+        "eee",
+        "e  ",
+        "eee",
+        "e  ",
+        "eee",
+        "   ",
     ],
     "f": [
-        "    ",
-        "ffff",
-        "f   ",
-        "ffff",
-        "f   ",
-        "f   ",
-        "    ",
+        "   ",
+        "fff",
+        "f  ",
+        "fff",
+        "f  ",
+        "f  ",
+        "   ",
     ],
     "g": [
         "    ",
@@ -104,13 +104,13 @@ font = {
         "    ",
     ],
     "l": [
-        "    ",
-        "l   ",
-        "l   ",
-        "l   ",
-        "l   ",
-        "llll",
-        "    ",
+        "   ",
+        "l  ",
+        "l  ",
+        "l  ",
+        "l  ",
+        "lll",
+        "   ",
     ],
     "m": [
         "     ",
@@ -399,6 +399,7 @@ def get_char_grid(char):
         raise Exception("Character '%s' not available" % char)
 
     return font.get(char)
+
 
 def get_char_width(char):
     grid = get_char_grid(char)
