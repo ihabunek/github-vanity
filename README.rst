@@ -6,20 +6,25 @@ Write to your GitHub activity chart.
 
 Licensed under the MIT License, see `LICENSE <LICENSE>`_.
 
+Installation
+------------
+
+Install from the cheese shop.
+
+.. code-block:: bash
+
+    pip install github-vanity
+
 Usage
 -----
 
-Initialize an empty repo which you will submit to GitHub.
+Initialize an empty Git repository which you will submit to GitHub.
 
-Populate the repo like so:
+Populate the repo with the desired text:
 
-.. code-block:: python
+.. code-block:: bash
 
-    from git import Repo
-    from github_vanity import write_text
-
-    repo = Repo('/path/to/repo/.git')
-    write_text("hi there!", repo, offset=7)
+    vanity write "Hello there!"
 
 Push the repo to GitHub and presto!
 
@@ -28,22 +33,18 @@ Push the repo to GitHub and presto!
 Reference
 ---------
 
-``github_vanity.write_text(text, repo, **kwargs)``
+``vanity write [options] text``
 
-- **text** - the text to write
-- **repo** - the repo to write to
+- **text** - text to write to the commit chart
 
-The ``kwargs`` are:
+Available options:
 
-- **offset** - number of spaces to leave to the left (default is 0)
-- **spacing** - spacing between letters (default is 1)
-- **space_width** - width of space character (default is 4)
-- **commits** - number of commits per pixel (default is 50)
-- **start_date** - the date to start with, should be a Sunday (default start date is the Sunday 52 weeks before the last one, which is the first pixel visible on the chart)
+- **-h**, **--help** - show usage instructions
+- **-d**, **--start_date** - the date to start with, **should be a Sunday**
+- **-o**, **--offset** - number of spaces to leave to the left (default is 0)
+- **-s**, **--spacing** - spacing between letters (default is 1)
+- **-w**, **--space_width** - width of space character (default is 4)
+- **-c**, **--commits** - number of commits per pixel (default is 50)
 
-
-TODO
-----
-
-- target a specific branch
-- publish to the Cheese shop
+The default ``start_date`` is the Sunday 52 weeks before the last one, which
+is the first pixel visible on the commit chart.
