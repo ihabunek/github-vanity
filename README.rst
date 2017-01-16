@@ -4,7 +4,16 @@ Vanity text for GitHub
 
 Write to your GitHub activity chart.
 
-Licensed under the MIT License, see `LICENSE <LICENSE>`_.
+Inspired by `Rockstar <https://github.com/avinassh/rockstar/>`_
+
+.. image:: https://img.shields.io/pypi/v/github-vanity.svg?style=flat-square   
+  :target: https://pypi.org/project/github-vanity/
+
+.. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square   
+  :target: LICENSE
+
+.. image:: https://img.shields.io/badge/author-%40ihabunek-blue.svg?style=flat-square   
+  :target: https://twitter.com/ihabunek
 
 Installation
 ------------
@@ -48,3 +57,4 @@ Available options:
 
 The default ``start_date`` is the Sunday 52 weeks before the last one, which
 is the first pixel visible on the commit chart.
+
