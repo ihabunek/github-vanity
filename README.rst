@@ -6,19 +6,37 @@ Write to your GitHub activity chart.
 
 Inspired by `Rockstar <https://github.com/avinassh/rockstar/>`_
 
-.. image:: https://img.shields.io/pypi/v/github-vanity.svg?style=flat-square   
+.. image:: https://img.shields.io/pypi/v/github-vanity.svg?style=flat-square
   :target: https://pypi.org/project/github-vanity/
 
-.. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square   
+.. image:: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
   :target: LICENSE
 
-.. image:: https://img.shields.io/badge/author-%40ihabunek-blue.svg?style=flat-square   
+.. image:: https://img.shields.io/badge/author-%40ihabunek-blue.svg?style=flat-square
   :target: https://twitter.com/ihabunek
 
 Installation
 ------------
 
-Install from the cheese shop.
+From APT package repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This works for Debian, Ubuntu and other derivatives.
+
+The repo is signed with my `keybase.io <https://keybase.io/ihabunek>`_ key.
+
+.. code-block::
+
+    echo "deb http://bezdomni.net/packages/ ./" | sudo tee /etc/apt/sources.list.d/bezomni.list
+    curl https://keybase.io/ihabunek/pgp_keys.asc | sudo apt-key add -
+
+    sudo apt update
+    sudo apt install python3-github-vanity
+
+From Python Package Index
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Preferably install into a virtual environment.
 
 .. code-block:: bash
 
