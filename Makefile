@@ -12,7 +12,10 @@ dist :
 	@echo "\nDone."
 
 clean :
-	rm -rf build dist *.egg-info MANIFEST
+	rm -rf build dist *.egg-info MANIFEST htmlcov deb_dist github-vanity*.tar.gz
 
 publish :
 	twine upload dist/*
+
+deb:
+	@python setup.py --command-packages=stdeb.command bdist_deb

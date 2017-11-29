@@ -1,7 +1,9 @@
 *.egg-info/
 *.pyc
 .cache/
-build/
-dist/
-tmp/
 .pypirc
+/github-vanity-*.tar.gz
+/build/
+/deb_dist/
+/dist/
+/tmp/
