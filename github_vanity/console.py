@@ -40,6 +40,10 @@ def write():
 
     default_start_date = str(get_root_date())
 
+    parser.add_option("-r", "--repo", type="string",
+                      help="Path to the git repository (defaults to current dir)",
+                      default=os.getcwd())
+
     parser.add_option("-d", "--start_date", dest="start_date", type="string",
                       help="the date of the first commit, should be a Sunday "
                            "(default is 53 weeks ago, which targets the leftmost "
@@ -73,14 +77,22 @@ def write():
         return
 
     try:
-        repo = Repo(os.getcwd())
+        repo = Repo(options.repo)
     except InvalidGitRepositoryError:
         print_err("This is not a valid Git repository")
         return
 
     text = args[1].lower()
 
-    write_text(text, repo, **options.__dict__)
+    write_text(
+        text,
+        repo,
+        start_date=options.start_date,
+        offset=options.offset,
+        spacing=options.spacing,
+        space_width=options.space_width,
+        commits=options.commits,
+    )
 
 
 def main():

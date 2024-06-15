@@ -57,6 +57,7 @@ Available options:
 - **-s**, **--spacing** - spacing between letters (default is 1)
 - **-w**, **--space_width** - width of space character (default is 4)
 - **-c**, **--commits** - number of commits per pixel (default is 50)
+- **-r**, **--repo** - path to the git repo to modify (defaults to current dir)
 
 The default ``start_date`` is the Sunday 52 weeks before the last one, which
 is the first pixel visible on the commit chart.
