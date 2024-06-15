@@ -7,7 +7,7 @@ from .font import get_char_grid, get_char_width
 def get_root_date(today=date.today()):
     weekday = today.weekday()
     last_sunday = today if weekday == 6 else today - timedelta(days=weekday + 1)
-    return last_sunday - timedelta(weeks=53)
+    return last_sunday - timedelta(weeks=52)
 
 
 def get_date(start_date, x, y):
