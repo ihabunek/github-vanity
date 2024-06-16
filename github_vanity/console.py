@@ -85,6 +85,14 @@ def write():
         print_err("This is not a valid Git repository")
         return
 
+    # Warn if repo is not empty
+    is_empty = repo.head.is_detached and len(repo.refs) == 0
+    if not is_empty:
+        val = input("The given repo is not empty. Continue? [y/N]: ")
+        if val.strip().lower() != "y":
+            return
+
+
     text = args[1].lower()
 
     write_text(
