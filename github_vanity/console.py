@@ -1,7 +1,8 @@
 import os
 import sys
 
-from datetime import datetime
+from datetime import date, datetime
+from typing import Optional
 from git import Repo
 from git.exc import InvalidGitRepositoryError, NoSuchPathError
 from optparse import OptionParser
@@ -19,11 +20,11 @@ def print_usage():
     print("  write  write your vanity text to a git repo")
 
 
-def print_err(msg):
+def print_err(msg: str):
     sys.stderr.write('\033[91m' + msg + '\033[0m' + "\n")
 
 
-def parse_date(date):
+def parse_date(date: str) -> Optional[date]:
     try:
         return datetime.strptime(date, "%Y-%m-%d").date()
     except ValueError:

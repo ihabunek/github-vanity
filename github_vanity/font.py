@@ -3,7 +3,10 @@
 # Silkscreen is distributed under the Open Font License
 # http://scripts.sil.org/OFL
 
-font = {
+from typing import Dict, List
+
+
+font: Dict[str, List[str]] = {
     "a": [
         "    ",
         " aa ",
@@ -484,13 +487,13 @@ font = {
 }
 
 
-def get_char_grid(char):
-    if char not in font:
+def get_char_grid(char: str) -> List[str]:
+    grid = font.get(char)
+    if not grid:
         raise Exception("Character '%s' not available" % char)
+    return grid
 
-    return font.get(char)
 
-
-def get_char_width(char):
+def get_char_width(char: str):
     grid = get_char_grid(char)
     return max(len(row) for row in grid)
