@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "github-vanity"
+authors = [{ name="Ivan Habunek", email="ivan@habunek.com" }]
+description = "Write to your GitHub activity chart"
+readme = "README.rst"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+dynamic = ["version"]
+keywords=["github", "vanity", "activity", "chart", "write"]
+
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    'Intended Audience :: Developers',
+]
+
+dependencies = [
+    "GitPython>=3.0.0",
+]
+
+[tool.setuptools]
+packages = [
+    "github_vanity",
+]
+
+[tool.setuptools_scm]
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "twine",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ihabunek/github-vanity"
+
+[project.scripts]
+vanity = "github_vanity.console:main"
+
+[tool.pyright]
+include = ["github_vanity"]
+typeCheckingMode = "strict"
