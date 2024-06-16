@@ -5,6 +5,7 @@ from datetime import date, datetime
 from git import Repo
 from git.exc import InvalidGitRepositoryError, NoSuchPathError
 from argparse import ArgumentParser, Namespace
+from github_vanity.font import font as chars
 
 from .write import write_text, get_root_date
 
@@ -27,8 +28,12 @@ def make_parser():
         epilog="https://github.com/ihabunek/github-vanity",
     )
 
-    subparsers = parser.add_subparsers()
-    write_parser = subparsers.add_parser("write")
+    subparsers = parser.add_subparsers(required=True)
+
+    font_parser = subparsers.add_parser("font", help="Show available font characters")
+    font_parser.set_defaults(func=font)
+
+    write_parser = subparsers.add_parser("write", help="Write to repo")
     write_parser.set_defaults(func=write)
     write_parser.add_argument("text", help="Text to write to chart")
 
@@ -125,3 +130,9 @@ def write(args: Namespace):
         space_width=args.space_width,
         commits=args.commits,
     )
+
+
+def font(_: Namespace):
+    for char, grid in chars.items():
+        for row in grid:
+            print(row)
