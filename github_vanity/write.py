@@ -52,8 +52,8 @@ def write_char(repo: Repo, char: str, start_date: date, offset: int, commits: in
 
 
 def write_text(
-    text: str,
     repo: Repo,
+    text: str,
     start_date: Optional[date] = None,
     offset: int = 0,
     spacing: int = 1,

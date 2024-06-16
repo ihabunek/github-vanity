@@ -97,8 +97,8 @@ def write():
     text = args[1].lower()
 
     write_text(
-        text,
         repo,
+        text,
         start_date=options.start_date,
         offset=options.offset,
         spacing=options.spacing,
