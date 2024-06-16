@@ -3,7 +3,7 @@ import sys
 
 from datetime import datetime
 from git import Repo
-from git.exc import InvalidGitRepositoryError
+from git.exc import InvalidGitRepositoryError, NoSuchPathError
 from optparse import OptionParser
 
 from .write import write_text, get_root_date
@@ -78,6 +78,9 @@ def write():
 
     try:
         repo = Repo(options.repo)
+    except NoSuchPathError:
+        print_err("Given path does not exist: {}".format(options.repo))
+        return
     except InvalidGitRepositoryError:
         print_err("This is not a valid Git repository")
         return
