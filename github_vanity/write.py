@@ -46,8 +46,7 @@ def write_char(repo: Repo, char: str, start_date: date, offset: int, commits: in
     for y, row in enumerate(grid):
         for x, pixel in enumerate(row):
             if pixel != " ":
-                stdout.write(".")
-                stdout.flush()
+                print(".", end="", flush=True)
                 write_pixel(repo, start_date, x + offset, y, commits)
 
 
