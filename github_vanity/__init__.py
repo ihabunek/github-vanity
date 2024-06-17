@@ -1,0 +1,2 @@
+class ConsoleError(Exception):
+    pass

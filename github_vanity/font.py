@@ -5,6 +5,7 @@
 
 from typing import Dict, List
 
+from github_vanity.console import ConsoleError
 
 font: Dict[str, List[str]] = {
     "a": [
@@ -490,7 +491,7 @@ font: Dict[str, List[str]] = {
 def get_char_grid(char: str) -> List[str]:
     grid = font.get(char)
     if not grid:
-        raise Exception("Character '%s' not available" % char)
+        raise ConsoleError(f"Character '{char}' is not available")
     return grid
 
 

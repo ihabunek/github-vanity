@@ -9,9 +9,8 @@ from github_vanity.font import font as chars
 
 from .write import write_text, get_root_date
 
+from github_vanity import ConsoleError
 
-class ConsoleError(Exception):
-    pass
 
 
 def print_err(msg: str):
