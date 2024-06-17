@@ -1,16 +1,18 @@
 import os
 import sys
-
+from argparse import ArgumentParser, Namespace
 from datetime import date, datetime
+from typing import List
+
 from git import Repo
 from git.exc import InvalidGitRepositoryError, NoSuchPathError
-from argparse import ArgumentParser, Namespace
-from github_vanity.font import font as chars
-
-from .write import write_text, get_root_date
 
 from github_vanity import ConsoleError
+from github_vanity.font import font as chars
+from github_vanity.font import get_char_grid
+from github_vanity.utils import batched
 
+from .write import get_root_date, write_text
 
 
 def print_err(msg: str):
@@ -31,6 +33,20 @@ def make_parser():
 
     font_parser = subparsers.add_parser("font", help="Show available font characters")
     font_parser.set_defaults(func=font)
+
+    preview_parser = subparsers.add_parser(
+        "preview", help="Preview how the text will appear in the chart"
+    )
+    preview_parser.set_defaults(func=preview)
+    preview_parser.add_argument("text", help="Text to preview")
+
+    preview_parser.add_argument(
+        "-s",
+        "--spacing",
+        type=int,
+        help="spacing between letters (default: %(default)s)",
+        default=1,
+    )
 
     write_parser = subparsers.add_parser("write", help="Write to repo")
     write_parser.set_defaults(func=write)
@@ -132,6 +148,39 @@ def write(args: Namespace):
 
 
 def font(_: Namespace):
-    for char, grid in chars.items():
+    for grid in chars.values():
         for row in grid:
             print(row)
+
+
+def preview(args: Namespace):
+    grids = [get_char_grid(char) for char in args.text]
+    space = " " * args.spacing
+    joined = [space.join(grid[y] for grid in grids) for y in range(7)]
+    print_halfblock(joined)
+
+
+def print_halfblock(grid: List[str]):
+    def _gen(pairs):
+        yield "\033[92m"  # green foreground
+
+        for top, bottom in pairs:
+            if top == " " and bottom == " ":
+                yield " "
+            elif top == " ":
+                yield "\N{LOWER HALF BLOCK}"
+            elif bottom == " ":
+                yield "\N{UPPER HALF BLOCK}"
+            else:
+                yield "\N{FULL BLOCK}"
+
+        yield "\033[0m"  # reset ansi
+
+    for row in batched(grid, 2):
+        # Handle odd numbered image height by repeating the last row
+        if len(row) == 1:
+            pairs = zip(row[0], row[0])
+        else:
+            pairs = zip(row[0], row[1])
+
+        print("".join(_gen(pairs)))
