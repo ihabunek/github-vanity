@@ -2,7 +2,7 @@ import os
 import sys
 from argparse import ArgumentParser, Namespace
 from datetime import date, datetime
-from typing import List
+from typing import Generator, Iterable, List, Tuple
 
 from git import Repo
 from git.exc import InvalidGitRepositoryError, NoSuchPathError
@@ -151,9 +151,8 @@ def preview(args: Namespace):
 
 
 def print_halfblock(grid: List[str]):
-    def _gen(pairs):
+    def _gen(pairs: Iterable[Tuple[str, str]]) -> Generator[str, None, None]:
         yield "\033[92m"  # green foreground
-
         for top, bottom in pairs:
             if top == " " and bottom == " ":
                 yield " "

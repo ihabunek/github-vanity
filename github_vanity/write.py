@@ -1,5 +1,4 @@
 from datetime import date, timedelta
-from sys import stdout
 from typing import Optional
 
 from git.repo import Repo
