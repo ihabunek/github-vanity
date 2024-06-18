@@ -177,9 +177,9 @@ def print_halfblock(grid: List[str]):
         yield "\033[0m"  # reset ansi
 
     for row in batched(grid, 2):
-        # Handle odd numbered image height by repeating the last row
+        # Handle last row by adding a blank row below
         if len(row) == 1:
-            pairs = zip(row[0], row[0])
+            pairs = zip(row[0], " " * len(row[0]))
         else:
             pairs = zip(row[0], row[1])
 
