@@ -8,7 +8,6 @@ from git import Repo
 from git.exc import InvalidGitRepositoryError, NoSuchPathError
 
 from github_vanity import ConsoleError
-from github_vanity.font import font as chars
 from github_vanity.font import get_char_grid
 from github_vanity.utils import batched
 
@@ -30,9 +29,6 @@ def make_parser():
     )
 
     subparsers = parser.add_subparsers(required=True)
-
-    font_parser = subparsers.add_parser("font", help="Show available font characters")
-    font_parser.set_defaults(func=font)
 
     preview_parser = subparsers.add_parser(
         "preview", help="Preview how the text will appear in the chart"
@@ -145,12 +141,6 @@ def write(args: Namespace):
         space_width=args.space_width,
         commits=args.commits,
     )
-
-
-def font(_: Namespace):
-    for grid in chars.values():
-        for row in grid:
-            print(row)
 
 
 def preview(args: Namespace):
